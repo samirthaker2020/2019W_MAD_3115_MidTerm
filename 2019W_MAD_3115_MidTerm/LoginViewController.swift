@@ -9,12 +9,20 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    var sd=UserDefaults.standard
+    @IBOutlet weak var rememberme: UISwitch!
+    @IBOutlet weak var txtpass: UITextField!
+    @IBOutlet weak var txtuid: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func btnlogin(_ sender: UIButton) {
+        
+        
+        
+    }
+    
 }
 
