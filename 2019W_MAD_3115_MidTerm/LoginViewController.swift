@@ -17,6 +17,19 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+     /*   if let uid = UserDefaults.string("uid")
+        {
+            txtuid.text = uid
+           rememberme.isOn=true
+        }
+        if let pass = UserDefaults.string("pass")
+        {
+            txtpass.text = pass
+           rememberme.isOn=true
+        }*/
+            
+      
     }
 
     @IBAction func btnlogin(_ sender: UIButton) {
@@ -24,6 +37,15 @@ class LoginViewController: UIViewController {
         if  (txtuid.text=="samir" && txtpass.text=="123")
         {
             
+            if(rememberme.isOn)
+            {
+                sd.set(txtuid.text, forKey: "uid")
+                 sd.set(txtpass.text, forKey: "pass")
+            }
+            else{
+                sd.removeObject(forKey: "uid")
+                sd.removeObject(forKey: "pass")
+            }
             let sp = UIStoryboard(name: "Main", bundle: nil)
             let LionVC = sp.instantiateViewController(withIdentifier: "studententry") as! StudentEntryViewController
             self.navigationController?.pushViewController(LionVC, animated: true)
