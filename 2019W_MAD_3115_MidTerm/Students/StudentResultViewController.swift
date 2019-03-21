@@ -74,7 +74,20 @@ class StudentResultViewController: UIViewController {
         }
         if  let e8=m2
         {
-            om1.text=String(e8)
+            om2.text=String(e8)
+        }
+        if  let e9=m3
+        {
+            om3.text=String(e9)
+        }
+        if  let e10=m4
+        {
+            om4.text=String(e10)
+        }
+        
+        if  let e12=m5
+        {
+            om5.text=String(e12)
         }
         tot=m1! + m2!+m3!+m4!+m5!
         per=tot!/5
