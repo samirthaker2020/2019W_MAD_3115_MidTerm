@@ -15,7 +15,7 @@ class Student {
     var gender:String
     var bdate:String
     var marks:[Float]
-    
+    var course:String
     init() {
         self.sid=String()
 self.sname=String()
@@ -23,14 +23,16 @@ self.sname=String()
         self.bdate=String()
         self.bdate=String()
         self.marks=[]
+        self.course=String()
     }
     
-    init(sid:String,sname:String,gen:String,bdate:String,marks:Array<Float>) {
+    init(sid:String,sname:String,gen:String,bdate:String,corse1:String,marks:Array<Float>) {
         self.sid=sid
         self.sname=sname
         self.gender=gen
         self.bdate=bdate
         self.marks=marks
+        self.course=corse1
     }
     
     

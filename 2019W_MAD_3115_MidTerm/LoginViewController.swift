@@ -18,16 +18,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-     /*   if let uid = UserDefaults.string("uid")
+        if let uid = sd.string(forKey: "uid")
         {
             txtuid.text = uid
            rememberme.isOn=true
         }
-        if let pass = UserDefaults.string("pass")
+        if let pass = sd.string(forKey: "pass")
         {
             txtpass.text = pass
            rememberme.isOn=true
-        }*/
+        }
             
       
     }

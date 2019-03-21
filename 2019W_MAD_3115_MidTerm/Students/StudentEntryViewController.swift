@@ -9,6 +9,10 @@
 import UIKit
 
 class StudentEntryViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
   
     
     var gender:String?
@@ -23,10 +27,12 @@ class StudentEntryViewController: UIViewController,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var m3: UITextField!
     @IBOutlet weak var m2: UITextField!
     @IBOutlet weak var txtemail: UITextField!
-    var m=[Float]
+    let s=Student()
+    var m=[Float]()
     override func viewDidLoad() {
         super.viewDidLoad()
-let s=Student()
+self.course.delegate=self
+        self.course.dataSource=self
         // Do any additional setup after loading the view.
     }
     
@@ -45,17 +51,18 @@ let s=Student()
     @IBOutlet weak var course: UIPickerView!
     
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component==0
+        {
+            
+        }
+        else{
+            return coursedetail.count
+        }
+        
+        return  0
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       if component==0
-       {
-       
-       }else{ return self.coursedetail.count}
-        return 0
-    }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component==1
         {
@@ -66,18 +73,34 @@ let s=Student()
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView==course
         {
-            course=self.course[course.selectedRow(inComponent: 1)]!
+            //course = self.course![pickerView.selectedRow(inComponent: 1)]
         }
     }
+    
     @IBAction func calculate(_ sender: Any) {
-        m.append(m1.text)
-        m.append(m1.text)
-        m.append(m1.text)
-        m.append(m1.text)
-        m.append(m1.text)
-        let s1=Student(sid:txtid.text!,sname:txtname.text!,gen:gender,bdate:bdate1,marks:Array<Float>)
-        
+        m.append(Float(m1.text!)!)
+          m.append(Float(m2.text!)!)
+           m.append(Float(m3.text!)!)
+           m.append(Float(m4.text!)!)
+           m.append(Float(m5.text!)!)
+        let s1=Student(sid:txtid.text!,sname:txtname.text!,gen:gender!,bdate:bdate1,corse1:"madt",marks:m)
+      //  s.displaydata()
+        let sb=UIStoryboard(name: "Main", bundle: nil)
+        let lionvc=sb.instantiateViewController(withIdentifier: "studentresult") as! st
+        lionvc.sid=txtsid.text
+        lionvc.sname=txtsname.text
+        lionvc.gender1=gender
+        lionvc.bdate1=bdate
+        lionvc.course1 = course
+        lionvc.m1 = Int(m1.text!)
+        lionvc.m5 = Int(m5.text!)
+        lionvc.m2 = Int(m2.text!)
+        lionvc.m3 = Int(m3.text!)
+        lionvc.m4 = Int(m4.text!)
+        self.navigationController?.pushViewController(lionvc, animated: true)
+
     }
+    
     
     /*
     // MARK: - Navigation

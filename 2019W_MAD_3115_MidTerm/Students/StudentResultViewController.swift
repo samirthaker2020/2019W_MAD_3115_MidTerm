@@ -9,7 +9,12 @@
 import UIKit
 
 class StudentResultViewController: UIViewController {
-
+    var sid:String?
+    var sname:String?
+    var gender1:String?
+    var bdate1:String?
+    var course1:String?
+    var marks1=[Float]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
