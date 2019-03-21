@@ -39,7 +39,14 @@ self.course.delegate=self
     
 
     @IBAction func grnder(_ sender: UISegmentedControl) {
-        gender=String(sender.selectedSegmentIndex)
+        if(sender.selectedSegmentIndex==0)
+        {
+            gender="Male"
+        }
+        else
+        {
+            gender="female"
+        }
     }
     @IBAction func bdate(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
@@ -84,7 +91,8 @@ self.course.delegate=self
            m.append(Float(m3.text!)!)
            m.append(Float(m4.text!)!)
            m.append(Float(m5.text!)!)
-        let s1=Student(sid:txtid.text!,sname:txtname.text!,gen:gender!,bdate:bdate1,corse1:"madt",marks:m)
+        let s1=Student(sid:txtid.text!,sname:txtname.text!,gen:gender!,bdate:bdate1,corse1:coursed!,m1:Float(m1.text!)!,m2:Float(m2.text!)!,m3:Float(m3.text!)!,m4:Float(m4.text!)!,m5:Float(m5.text!)!)
+        
       //  s.displaydata()
         let sb=UIStoryboard(name: "Main", bundle: nil)
         let lionvc=sb.instantiateViewController(withIdentifier: "studentresult") as! StudentResultViewController
@@ -94,8 +102,12 @@ self.course.delegate=self
         lionvc.gender1=gender
         lionvc.bdate1=bdate1
         lionvc.course1 = coursed
-        lionvc.email=txtemail
-       
+        lionvc.email=txtemail.text
+        lionvc.m1 = Float(m1.text!)
+       lionvc.m2 = Float(m2.text!)
+         lionvc.m3 = Float(m3.text!)
+         lionvc.m4 = Float(m4.text!)
+         lionvc.m5 = Float(m5.text!)
         self.navigationController?.pushViewController(lionvc, animated: true)
 
     }
