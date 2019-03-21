@@ -15,9 +15,13 @@ class StudentResultViewController: UIViewController {
     var bdate1:String?
     var course1:String?
     var marks1=[Float]()
+    var email:String?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+if let e=sid
+{
+    print(e)
+        }
         // Do any additional setup after loading the view.
     }
     

@@ -16,6 +16,7 @@ class StudentEntryViewController: UIViewController,UIPickerViewDelegate,UIPicker
   
     
     var gender:String?
+    var coursed:String?
     @IBOutlet weak var txtid: UITextField!
     var bdate1:String=""
     @IBOutlet weak var txtname: UITextField!
@@ -73,7 +74,7 @@ self.course.delegate=self
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView==course
         {
-            //course = self.course![pickerView.selectedRow(inComponent: 1)]
+            coursed = coursedetail[row]
         }
     }
     
@@ -86,17 +87,15 @@ self.course.delegate=self
         let s1=Student(sid:txtid.text!,sname:txtname.text!,gen:gender!,bdate:bdate1,corse1:"madt",marks:m)
       //  s.displaydata()
         let sb=UIStoryboard(name: "Main", bundle: nil)
-        let lionvc=sb.instantiateViewController(withIdentifier: "studentresult") as! st
-        lionvc.sid=txtsid.text
-        lionvc.sname=txtsname.text
+        let lionvc=sb.instantiateViewController(withIdentifier: "studentresult") as! StudentResultViewController
+        lionvc.sid=txtid.text
+        lionvc.sname=txtname.text
+ lionvc.marks1=m
         lionvc.gender1=gender
-        lionvc.bdate1=bdate
-        lionvc.course1 = course
-        lionvc.m1 = Int(m1.text!)
-        lionvc.m5 = Int(m5.text!)
-        lionvc.m2 = Int(m2.text!)
-        lionvc.m3 = Int(m3.text!)
-        lionvc.m4 = Int(m4.text!)
+        lionvc.bdate1=bdate1
+        lionvc.course1 = coursed
+        lionvc.email=txtemail
+       
         self.navigationController?.pushViewController(lionvc, animated: true)
 
     }
